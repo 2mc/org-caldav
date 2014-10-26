@@ -877,9 +877,10 @@ Returns buffer containing the ICS file."
     (org-caldav-debug-print 1 (format "Generating ICS file %s."
 				      (symbol-value icalendar-file)))
     ;; Export events to one single ICS file.
+    ;; (message "mc orgfiles %s" orgfiles)
     (if (featurep 'ox-icalendar)
-	;; New exporter (Org 8)
-	(apply 'org-icalendar--combine-files nil orgfiles)
+        ;; New exporter (Org 8)
+	(apply 'org-icalendar--combine-files orgfiles) ;; mc: was ... nil orgfiles ???
       (apply 'org-export-icalendar t orgfiles))
     (find-file-noselect (symbol-value icalendar-file))))
 
