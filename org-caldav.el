@@ -880,7 +880,7 @@ Returns buffer containing the ICS file."
     ;; (message "mc orgfiles %s" orgfiles)
     (if (featurep 'ox-icalendar)
         ;; New exporter (Org 8)
-	(apply 'org-icalendar--combine-files orgfiles) ;; mc: was ... nil orgfiles ???
+	(apply 'org-icalendar--combine-files orgfiles) ;; was ... nil orgfiles -- Aha, changed in org master!
       (apply 'org-export-icalendar t orgfiles))
     (find-file-noselect (symbol-value icalendar-file))))
 
